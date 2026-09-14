@@ -827,3 +827,398 @@ button#btnEnviar:disabled {
         text-align: center;
     }
 }
+
+/* =========================================================
+   PÁGINA DE MANUTENÇÃO
+   ========================================================= */
+.maintenance-card {
+    max-width: 540px;
+    text-align: center;
+    padding: 36px 32px 32px;
+}
+
+.maintenance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(185, 28, 28, 0.18);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    box-shadow: 0 0 16px rgba(185, 28, 28, 0.35);
+}
+
+.status-dot-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    box-shadow: 0 0 8px #f59e0b;
+    position: relative;
+}
+
+.status-dot-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.45);
+    animation: statusPulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+.maintenance-icon-box {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.maintenance-icon-aura {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(185, 28, 28, 0.45) 0%, rgba(18, 9, 13, 0.8) 75%);
+    border: 1px solid var(--gold-border);
+    box-shadow: 
+        0 0 28px rgba(185, 28, 28, 0.6),
+        0 0 10px rgba(212, 175, 55, 0.4),
+        inset 0 0 16px rgba(212, 175, 55, 0.2);
+    animation: auraBreath 3.5s ease-in-out infinite;
+}
+
+@keyframes auraBreath {
+    0%, 100% {
+        box-shadow: 
+            0 0 24px rgba(185, 28, 28, 0.5),
+            0 0 8px rgba(212, 175, 55, 0.35),
+            inset 0 0 14px rgba(212, 175, 55, 0.15);
+    }
+    50% {
+        box-shadow: 
+            0 0 36px rgba(220, 38, 38, 0.75),
+            0 0 16px rgba(254, 240, 138, 0.5),
+            inset 0 0 22px rgba(212, 175, 55, 0.3);
+    }
+}
+
+.maintenance-icon-svg {
+    position: relative;
+    z-index: 2;
+    color: var(--gold-light);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+    animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+.maintenance-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 auto 24px;
+    max-width: 440px;
+    letter-spacing: 0.3px;
+}
+
+.maintenance-subtitle strong {
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+/* Painel de Informações dos Servidores */
+.maintenance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.maintenance-item {
+    background: rgba(28, 14, 21, 0.75);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.25s ease;
+}
+
+.maintenance-item:hover {
+    border-color: var(--gold-border);
+    background: rgba(38, 18, 28, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.maintenance-item-label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--gold-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.maintenance-item-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.val-highlight {
+    color: var(--gold-light);
+}
+
+.val-offline {
+    color: #fca5a5;
+}
+
+/* Barra de Progresso / Estimativa */
+.maintenance-progress-box {
+    background: rgba(22, 11, 16, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 24px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.progress-header-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-label);
+}
+
+.progress-header-pct {
+    font-weight: 700;
+    color: var(--gold-light);
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(10, 4, 6, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 75%;
+    background: linear-gradient(90deg, #700f0f 0%, #dc2626 50%, #d4af37 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+    position: relative;
+    animation: progressShimmer 2.5s infinite linear;
+}
+
+@keyframes progressShimmer {
+    0% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.25);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+.progress-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Aviso de Retornar Mais Tarde */
+.maintenance-notice-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(28, 14, 21, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    color: var(--text-label);
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+    text-align: left;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 15px rgba(185, 28, 28, 0.15);
+}
+
+.maintenance-notice-icon {
+    color: var(--gold-light);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.maintenance-notice-text strong {
+    display: block;
+    color: var(--gold-light);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.maintenance-notice-text p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* Botões de Ação da Manutenção */
+.maintenance-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-maintenance-primary {
+    flex: 1 1 200px;
+    padding: 13px 20px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(180deg, var(--crimson-btn-top) 0%, var(--crimson-btn-mid) 50%, var(--crimson-btn-bot) 100%);
+    border: 1px solid var(--gold-primary);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 
+        0 4px 18px rgba(185, 28, 28, 0.5), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: all 0.22s ease;
+    cursor: pointer;
+}
+
+.btn-maintenance-primary:hover {
+    background: linear-gradient(180deg, #dc2626 0%, #991b1b 50%, #700f0f 100%);
+    border-color: var(--gold-light);
+    box-shadow: 
+        0 0 24px rgba(239, 68, 68, 0.7), 
+        0 0 8px rgba(212, 175, 55, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.btn-maintenance-secondary {
+    flex: 1 1 160px;
+    padding: 13px 18px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: rgba(28, 14, 21, 0.85);
+    border: 1px solid var(--gold-border);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.btn-maintenance-secondary:hover {
+    border-color: var(--gold-primary);
+    background: rgba(38, 18, 28, 0.95);
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-maintenance-secondary:active {
+    transform: translateY(1px);
+}
+
+/* Responsividade da Página de Manutenção */
+@media (max-width: 560px) {
+    .maintenance-card {
+        padding: 24px 18px;
+    }
+
+    .maintenance-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .maintenance-actions {
+        flex-direction: column;
+    }
+
+    .btn-maintenance-primary,
+    .btn-maintenance-secondary {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+}
+

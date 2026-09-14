@@ -69,6 +69,7 @@ metin2-legends-register/
 ├── banner.jpg        # Banner épico do topo da página
 ├── favicon.ico       # Ícone de aba do navegador
 ├── index.html        # Estrutura semântica e formulário de cadastro
+├── manutencao.html   # Página de manutenção do servidor
 ├── script.js         # Lógica de validação, modal e envio assíncrono
 ├── style.css         # Estilos, variáveis e design system dark fantasy
 └── README.md         # Documentação do projeto
