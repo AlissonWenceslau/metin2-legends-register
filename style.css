@@ -702,3 +702,128 @@ button#btnEnviar:disabled {
         border-bottom: none;
     }
 }
+
+/* ================= RODAPÉ ================= */
+.site-footer {
+    width: 100%;
+    padding: 0 16px 28px;
+    margin-top: 8px;
+}
+
+.footer-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 28px;
+    padding: 0 16px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 600px;
+    margin: 0 auto 24px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-logo-text {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    background: linear-gradient(90deg, #ffffff 0%, var(--gold-light) 40%, var(--gold-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+.footer-tagline {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.4px;
+    font-style: italic;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--gold-border);
+    background: rgba(18, 9, 13, 0.75);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.22s ease;
+}
+
+.footer-link:hover {
+    border-color: var(--gold-primary);
+    color: var(--gold-light);
+    background: rgba(30, 12, 20, 0.95);
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.25), 0 0 8px rgba(192, 38, 38, 0.2);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    max-width: 600px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(212, 175, 55, 0.12);
+    padding-top: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+}
+
+.footer-disclaimer {
+    font-size: 11px;
+    color: rgba(184, 166, 152, 0.5);
+    letter-spacing: 0.2px;
+}
+
+/* Responsividade do rodapé */
+@media (max-width: 480px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .footer-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-brand {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+}
