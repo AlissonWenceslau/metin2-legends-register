@@ -25,6 +25,10 @@
     --crimson-btn-mid: #8b1313;
     --crimson-btn-bot: #5b0a0a;
 
+    --error-red: #ef4444;
+    --error-light: #fca5a5;
+    --error-bg: rgba(45, 12, 20, 0.92);
+
     --text-primary: #f5f0e6;
     --text-muted: #b8a698;
     --text-label: #decbb7;
@@ -200,6 +204,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    position: relative;
 }
 
 label {
@@ -253,6 +258,51 @@ select:focus {
     box-shadow: 
         0 0 12px rgba(212, 175, 55, 0.35), 
         0 0 4px rgba(220, 38, 38, 0.5);
+}
+
+/* ================= VALIDAÇÃO CUSTOMIZADA ================= */
+input.is-invalid,
+select.is-invalid {
+    border-color: var(--error-red) !important;
+    background-color: var(--error-bg) !important;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.45) !important;
+}
+
+.error-msg {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--error-light);
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.error-msg.visible {
+    display: flex;
+    animation: errorSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.error-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--error-red);
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+}
+
+@keyframes errorSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ================= BOTÃO CADASTRAR ================= */
