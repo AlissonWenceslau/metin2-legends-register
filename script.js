@@ -19,6 +19,20 @@ const modalTitle = document.getElementById('modalTitle');
 const modalMessage = document.getElementById('modalMessage');
 const modalBtnClose = document.getElementById('modalBtnClose');
 
+// Tooltip de Ajuda do Login
+const tooltipWrapper = document.querySelector('.tooltip-wrapper');
+if (tooltipWrapper) {
+    // Suporte para toggle em toque (mobile)
+    tooltipWrapper.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tooltipWrapper.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+        tooltipWrapper.classList.remove('active');
+    });
+}
+
 /* ================= VALIDAÇÕES ================= */
 function validateField(field) {
     const value = field.value.trim();
@@ -31,8 +45,8 @@ function validateField(field) {
     } else if (field.id === 'login') {
         if (!value) {
             errorMessage = "Informe o seu login de usuário.";
-        } else if (value.length < 4 || value.length > 16) {
-            errorMessage = "O login deve conter entre 4 e 16 caracteres.";
+        } else if (value.length < 4 || value.length > 8) {
+            errorMessage = "O login deve conter de 4 a 8 caracteres.";
         } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
             errorMessage = "Use apenas letras, números ou underline (_).";
         }

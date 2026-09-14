@@ -155,7 +155,7 @@ body {
         0 20px 45px rgba(0, 0, 0, 0.9),
         inset 0 1px 0 rgba(254, 240, 138, 0.2);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* Efeito de brilho sutil no topo do card */
@@ -207,6 +207,12 @@ form {
     position: relative;
 }
 
+.label-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 label {
     font-family: var(--font-heading);
     font-size: 12px;
@@ -214,6 +220,87 @@ label {
     letter-spacing: 0.8px;
     color: var(--text-label);
     text-transform: uppercase;
+}
+
+/* ================= TOOLTIP DO CAMPO LOGIN ================= */
+.tooltip-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: help;
+    outline: none;
+}
+
+.tooltip-icon {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: rgba(32, 16, 24, 0.9);
+    border: 1px solid var(--gold-primary);
+    color: var(--gold-light);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.tooltip-wrapper:hover .tooltip-icon,
+.tooltip-wrapper:focus .tooltip-icon,
+.tooltip-wrapper.active .tooltip-icon {
+    background: var(--gold-primary);
+    color: #0c0608;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+    transform: scale(1.1);
+}
+
+.tooltip-content {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%) translateX(4px);
+    background: rgba(18, 9, 14, 0.98);
+    border: 1px solid var(--gold-primary);
+    color: #f5f0e6;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.9), 
+        0 0 14px rgba(212, 175, 55, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 1000;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 6px solid var(--gold-primary);
+}
+
+.tooltip-wrapper:hover .tooltip-content,
+.tooltip-wrapper:focus .tooltip-content,
+.tooltip-wrapper.active .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
 }
 
 input,
@@ -477,5 +564,23 @@ button#btnEnviar:disabled {
 
     .card-title {
         font-size: 20px;
+    }
+
+    .tooltip-content {
+        white-space: normal;
+        max-width: 200px;
+        text-align: center;
+        left: auto;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    .tooltip-arrow {
+        right: 12px;
+        top: 100%;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-top: 6px solid var(--gold-primary);
+        border-bottom: none;
     }
 }
