@@ -41,22 +41,6 @@
 
                 <form id="meuForm" novalidate>
                     <div class="form-group">
-                        <label for="origem">Como você conheceu nosso servidor?</label>
-                        <select id="origem" name="entry.856170902" required>
-                            <option value="" disabled selected>Selecione uma opção...</option>
-                            <option value="YouTube / Twitch (Lives ou Vídeos)">YouTube / Twitch (Lives ou Vídeos)
-                            </option>
-                            <option value="Instagram / TikTok">Instagram / TikTok</option>
-                            <option value="Discord">Discord</option>
-                            <option value="Indicação de Amigos">Indicação de Amigos</option>
-                            <option value="Grupos / Fóruns de Metin2">Grupos / Fóruns de Metin2</option>
-                            <option value="Pesquisa no Google">Pesquisa no Google</option>
-                            <option value="Outros">Outros</option>
-                        </select>
-                        <span class="error-msg" id="error-origem"></span>
-                    </div>
-
-                    <div class="form-group">
                         <div class="label-row">
                             <label for="login">Login da Conta:</label>
                             <div class="tooltip-wrapper" tabindex="0" aria-describedby="tooltip-login">
@@ -92,6 +76,22 @@
                         <input type="text" id="safebox" name="entry.1245374036"
                             placeholder="Código de segurança (ex: 7 dígitos)" required>
                         <span class="error-msg" id="error-safebox"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="origem">Como você conheceu nosso servidor?</label>
+                        <select id="origem" name="entry.856170902" required>
+                            <option value="" disabled selected>Selecione uma opção...</option>
+                            <option value="YouTube / Twitch (Lives ou Vídeos)">YouTube / Twitch (Lives ou Vídeos)
+                            </option>
+                            <option value="Instagram / TikTok">Instagram / TikTok</option>
+                            <option value="Discord">Discord</option>
+                            <option value="Indicação de Amigos">Indicação de Amigos</option>
+                            <option value="Grupos / Fóruns de Metin2">Grupos / Fóruns de Metin2</option>
+                            <option value="Pesquisa no Google">Pesquisa no Google</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        <span class="error-msg" id="error-origem"></span>
                     </div>
 
                     <button type="submit" id="btnEnviar">Cadastrar</button>
