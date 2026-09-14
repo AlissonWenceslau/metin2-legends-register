@@ -3,6 +3,44 @@ const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfArkU7sRQorkx
 const form = document.getElementById('meuForm');
 const btn = document.getElementById('btnEnviar');
 
+// Elementos do Modal
+const modalOverlay = document.getElementById('modalOverlay');
+const modalIcon = document.getElementById('modalIcon');
+const modalTitle = document.getElementById('modalTitle');
+const modalMessage = document.getElementById('modalMessage');
+const modalBtnClose = document.getElementById('modalBtnClose');
+
+function showModal(type, title, message) {
+    modalIcon.className = `modal-icon ${type}`;
+    modalIcon.textContent = type === 'success' ? '✓' : '✕';
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+
+    modalOverlay.classList.add('active');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    modalBtnClose.focus();
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('active');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+}
+
+// Fechar modal ao clicar no botão, clicar fora ou pressionar Escape
+modalBtnClose.addEventListener('click', closeModal);
+
+modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+        closeModal();
+    }
+});
+
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -31,11 +69,11 @@ form.addEventListener('submit', async (e) => {
             body: urlParams.toString()
         });
 
-        alert("✅ Enviado com sucesso!");
+        showModal('success', 'Cadastro realizado!', 'Sua conta foi cadastrada com sucesso.');
         form.reset();
     } catch (err) {
         console.error("Erro no envio:", err);
-        alert("❌ Falha no envio.");
+        showModal('error', 'Falha no cadastro', 'Ocorreu um erro ao enviar seus dados. Tente novamente mais tarde.');
     } finally {
         btn.disabled = false;
         btn.innerText = "Cadastrar";

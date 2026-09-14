@@ -4,39 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Metin2 Legends - Cadastro</title>
+    <!-- Fontes do Google: Cinzel (fantasia/épico) e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <form id="meuForm">
-        <label for="origem">Como você conheceu nosso servidor?</label>
-        <select id="origem" name="entry.856170902" required>
-            <option value="" disabled selected>Selecione uma opção...</option>
-            <option value="YouTube / Twitch (Lives ou Vídeos)">YouTube / Twitch (Lives ou Vídeos)</option>
-            <option value="Instagram / TikTok">Instagram / TikTok</option>
-            <option value="Discord">Discord</option>
-            <option value="Indicação de Amigos">Indicação de Amigos</option>
-            <option value="Grupos / Fóruns de Metin2">Grupos / Fóruns de Metin2</option>
-            <option value="Pesquisa no Google">Pesquisa no Google</option>
-            <option value="Outros">Outros</option>
-        </select>
+    <div class="page-container">
+        <!-- Banner no Topo -->
+        <header class="banner-header">
+            <div class="banner-wrapper">
+                <img src="banner.jpg" alt="Metin2 Legends Banner" class="banner-img">
+                <div class="banner-fade"></div>
+            </div>
+            <div class="banner-divider">
+                <div class="divider-line"></div>
+                <div class="divider-gem">◆</div>
+                <div class="divider-line"></div>
+            </div>
+        </header>
 
-        <label>Login:</label>
-        <input type="text" name="entry.1055462881" placeholder="Seu login" required>
+        <!-- Área Principal com o Formulário -->
+        <main class="main-wrapper">
+            <div class="card-container">
+                <div class="card-header">
+                    <h1 class="card-title">CRIAR CONTA</h1>
+                    <p class="card-subtitle">Junte-se à batalha em Metin2 Legends</p>
+                </div>
 
-        <label>Senha:</label>
-        <input type="password" name="entry.348290478" placeholder="Sua senha" required>
+                <form id="meuForm">
+                    <div class="form-group">
+                        <label for="origem">Como você conheceu nosso servidor?</label>
+                        <select id="origem" name="entry.856170902" required>
+                            <option value="" disabled selected>Selecione uma opção...</option>
+                            <option value="YouTube / Twitch (Lives ou Vídeos)">YouTube / Twitch (Lives ou Vídeos)</option>
+                            <option value="Instagram / TikTok">Instagram / TikTok</option>
+                            <option value="Discord">Discord</option>
+                            <option value="Indicação de Amigos">Indicação de Amigos</option>
+                            <option value="Grupos / Fóruns de Metin2">Grupos / Fóruns de Metin2</option>
+                            <option value="Pesquisa no Google">Pesquisa no Google</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
 
-        <label>E-mail:</label>
-        <input type="email" name="entry.966180966" placeholder="Seu e-mail" required>
+                    <div class="form-group">
+                        <label for="login">Login da Conta:</label>
+                        <input type="text" id="login" name="entry.1055462881" placeholder="Seu login no jogo" required autocomplete="username">
+                    </div>
 
-        <label>Senha do Personagem:</label>
-        <input type="text" name="entry.1245374036" placeholder="Senha do Personagem" required>
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="entry.348290478" placeholder="Sua senha secreta" required autocomplete="new-password">
+                    </div>
 
-        <button type="submit" id="btnEnviar">Cadastrar</button>
-    </form>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="entry.966180966" placeholder="exemplo@email.com" required autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="safebox">Código do Personagem (Armazém / Deleção):</label>
+                        <input type="text" id="safebox" name="entry.1245374036" placeholder="Código de segurança (ex: 7 dígitos)" required>
+                    </div>
+
+                    <button type="submit" id="btnEnviar">Cadastrar</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Feedback -->
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+        <div class="modal-card">
+            <div id="modalIcon" class="modal-icon"></div>
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <p id="modalMessage" class="modal-message"></p>
+            <button type="button" id="modalBtnClose" class="modal-btn">Fechar</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

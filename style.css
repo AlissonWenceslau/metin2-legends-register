@@ -1,52 +1,431 @@
-body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+/* =========================================================
+   METIN2 LEGENDS - TEMA DARK FANTASY ÉPICO
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+:root {
+    --bg-dark: #0c0608;
+    --bg-card: rgba(18, 9, 13, 0.92);
+    --bg-input: rgba(28, 14, 21, 0.85);
+    --bg-input-focus: rgba(38, 18, 28, 0.95);
+    
+    --gold-primary: #d4af37;
+    --gold-light: #fef08a;
+    --gold-dim: #996e1a;
+    --gold-border: rgba(212, 175, 55, 0.35);
+
+    --crimson-glow: rgba(185, 28, 28, 0.35);
+    --crimson-border: rgba(185, 28, 28, 0.45);
+    --crimson-btn-top: #c02626;
+    --crimson-btn-mid: #8b1313;
+    --crimson-btn-bot: #5b0a0a;
+
+    --text-primary: #f5f0e6;
+    --text-muted: #b8a698;
+    --text-label: #decbb7;
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 50% 15%, rgba(139, 19, 19, 0.28) 0%, transparent 60%),
+        radial-gradient(circle at 80% 60%, rgba(88, 10, 10, 0.2) 0%, transparent 50%),
+        linear-gradient(180deg, #070305 0%, #12070a 50%, #0a0406 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ================= BANNER DO TOPO ================= */
+.banner-header {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-wrapper {
+    width: 100%;
+    position: relative;
+    max-height: 280px;
+    height: 26vw;
+    min-height: 140px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    filter: brightness(1.05) contrast(1.08);
+}
+
+/* Efeito de fade inferior para transição suave com o fundo */
+.banner-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(12, 6, 8, 0.1) 0%,
+        rgba(12, 6, 8, 0.2) 50%,
+        rgba(12, 6, 8, 0.9) 90%,
+        #0c0608 100%
+    );
+    pointer-events: none;
+}
+
+/* Divisor gótico com gema central */
+.banner-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin-top: -10px;
+    z-index: 10;
+    padding: 0 16px;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        var(--gold-primary), 
+        transparent
+    );
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+}
+
+.divider-gem {
+    color: var(--gold-primary);
+    font-size: 14px;
+    margin: 0 12px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 18px rgba(220, 38, 38, 0.9);
+}
+
+/* ================= ÁREA PRINCIPAL ================= */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px 50px;
+}
+
+/* Card do Formulário */
+.card-container {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-card);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    box-shadow: 
+        0 0 35px var(--crimson-glow),
+        0 20px 45px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(254, 240, 138, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho sutil no topo do card */
+.card-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    box-shadow: 0 0 10px var(--gold-primary);
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--gold-light) 30%, var(--gold-primary) 70%, var(--gold-dim) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+    margin-bottom: 6px;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* ================= FORMULÁRIO ================= */
 form {
     display: flex;
     flex-direction: column;
-    width: 320px;
-    gap: 12px;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: var(--text-label);
+    text-transform: uppercase;
 }
 
 input,
-button {
-    padding: 10px;
+select {
+    width: 100%;
+    padding: 12px 14px;
     font-size: 14px;
-    border: 1px solid #ccc;
+    font-family: var(--font-body);
+    color: #ffffff;
+    background-color: var(--bg-input);
+    border: 1px solid var(--crimson-border);
     border-radius: 6px;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
 }
 
-button {
-    background: #4f46e5;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
+input::placeholder {
+    color: rgba(200, 180, 180, 0.4);
+    font-size: 13px;
 }
 
 select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border, #ccc);
-    border-radius: 8px;
-    box-sizing: border-box;
-    background-color: #fff;
-    font-size: 14px;
-    color: var(--text, #1e293b);
-    transition: border-color 0.2s;
     cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
+select option {
+    background-color: #1a0b12;
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+input:focus,
 select:focus {
-    outline: none;
-    border-color: var(--primary, #6366f1);
+    border-color: var(--gold-primary);
+    background-color: var(--bg-input-focus);
+    box-shadow: 
+        0 0 12px rgba(212, 175, 55, 0.35), 
+        0 0 4px rgba(220, 38, 38, 0.5);
+}
+
+/* ================= BOTÃO CADASTRAR ================= */
+button#btnEnviar {
+    margin-top: 8px;
+    padding: 14px 20px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(180deg, var(--crimson-btn-top) 0%, var(--crimson-btn-mid) 50%, var(--crimson-btn-bot) 100%);
+    border: 1px solid var(--gold-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 
+        0 4px 18px rgba(185, 28, 28, 0.5), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button#btnEnviar:hover:not(:disabled) {
+    background: linear-gradient(180deg, #dc2626 0%, #991b1b 50%, #700f0f 100%);
+    border-color: var(--gold-light);
+    box-shadow: 
+        0 0 24px rgba(239, 68, 68, 0.7), 
+        0 0 8px rgba(212, 175, 55, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+button#btnEnviar:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(185, 28, 28, 0.6);
+}
+
+button#btnEnviar:disabled {
+    background: #38242b;
+    border-color: #553b44;
+    color: #8c737c;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ================= MODAL DE FEEDBACK ================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 3, 5, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 99999;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background: rgba(19, 10, 15, 0.97);
+    width: 100%;
+    max-width: 380px;
+    border-radius: 12px;
+    border: 1px solid var(--gold-border);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 
+        0 0 45px rgba(0, 0, 0, 0.95), 
+        0 0 30px var(--crimson-glow),
+        inset 0 1px 0 rgba(254, 240, 138, 0.2);
+    transform: translateY(16px) scale(0.95);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.modal-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Sucesso: Esmeralda inspirada na joia do logo */
+.modal-icon.success {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.1) 70%);
+    border: 1px solid #10b981;
+    color: #34d399;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Erro: Rubi de fogo */
+.modal-icon.error {
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, rgba(185, 28, 28, 0.1) 70%);
+    border: 1px solid #ef4444;
+    color: #f87171;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    margin-bottom: 10px;
+}
+
+.modal-message {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 12px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: 1px solid var(--gold-primary);
+    cursor: pointer;
+    background: linear-gradient(180deg, #2b141d 0%, #170b10 100%);
+    color: var(--gold-light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.modal-btn:hover {
+    background: linear-gradient(180deg, var(--crimson-btn-top) 0%, var(--crimson-btn-mid) 100%);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(220, 38, 38, 0.5);
+    transform: translateY(-1px);
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 480px) {
+    .banner-wrapper {
+        height: 160px;
+    }
+    
+    .card-container {
+        padding: 24px 18px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
 }
